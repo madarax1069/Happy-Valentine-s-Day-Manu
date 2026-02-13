@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Valentine Card for Manu</title>
+
+<style>
+body {
+  margin: 0;
+  padding: 0;
+  background: #ffd6e7;
+  font-family: "Segoe UI", sans-serif;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.card-container {
+  width: 90%;
+  max-width: 500px;
+  height: 80vh;
+  background: #ffeaf3;
+  border: 8px solid #ff4d6d;
+  border-radius: 25px;
+  box-shadow: 0 0 30px rgba(255, 0, 80, 0.4);
+  padding: 30px;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+
+.page {
+  display: none;
+  height: 100%;
+  overflow-y: auto;
+  animation: fade 0.6s ease;
+}
+
+.page.active {
+  display: block;
+}
+
+h1 {
+  font-size: 32px;
+  color: #d6003d;
+}
+
+h2 {
+  color: #d6003d;
+}
+
+p {
+  font-size: 17px;
+  color: #5a0033;
+  line-height: 1.6;
+}
+
+button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background: #ff4d6d;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #e6004c;
+}
+
+@keyframes fade {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+/* Floating hearts */
+.heart {
+  position: absolute;
+  bottom: -50px;
+  font-size: 20px;
+  color: red;
+  animation: float 6s linear infinite;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100vh) scale(1.5);
+    opacity: 0;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="card-container">
+
+  <!-- Page 0 -->
+  <div class="page active">
+    <h1>Happy valentine's dayy manu😘❤!!!</h1>
+    <p>My beautiful girl, this is for you 💖</p>
+    <button onclick="nextPage()">Tap to see next page</button>
+  </div>
+
+  <!-- Page 1 -->
+  <div class="page">
+    <h2>My Valentine, My Manu 🌸</h2>
+    <p>
+    Hi my love,<br><br>
+    Happy Valentine’s Day, Manu 💖<br><br>
+    Every day feels special because I have you. You are the most beautiful part of my life. Not just your smile, not just your eyes, but your heart. Your heart is so pure and soft and kind.<br><br>
+    Whenever I think about you, I feel calm. I feel safe. I feel lucky. You are not just my girlfriend. You are my happiness.<br><br>
+    You are my baby. My safe place. My forever Valentine 💕
+    </p>
+    <button onclick="nextPage()">Tap to see next page</button>
+  </div>
+
+  <!-- Page 2 -->
+  <div class="page">
+    <h2>How Much I Care 🌸</h2>
+    <p>
+    Manu,<br><br>
+    I care about you deeply. More than words can explain.<br><br>
+    Your smile matters to me. Your tears matter to me. Your mood matters to me. Your dreams matter to me. Everything about you matters to me.<br><br>
+    If you are happy, I am happy. If you are sad, I want to hold you and make everything better.<br><br>
+    I promise to always respect you. I promise to always listen to you. I promise to stand beside you in every situation.<br><br>
+    I do not just love you. I choose you every day.<br><br>
+    You are mine, and I am only yours. Forever.
+    </p>
+    <button onclick="nextPage()">Tap to see next page</button>
+  </div>
+
+  <!-- Page 3 -->
+  <div class="page">
+    <h2>My Forever Promise 🌸</h2>
+    <p>
+    My sweet Manu,<br><br>
+    I want to love you forever. Not just for today but for every day that comes.<br><br>
+    I want to grow with you. I want to support your dreams. I want to celebrate your success. I want to hold your hand through every challenge.<br><br>
+    I promise to stay loyal. I promise to stay honest. I promise to stay yours.<br><br>
+    No matter what happens, my heart belongs to you. I am only yours and I will always love you with the same care and softness.<br><br>
+    Happy Valentine’s Day my Manu ❤️<br><br>
+    Always yours.
+    </p>
+    <button onclick="startOver()">Start from beginning</button>
+  </div>
+
+</div>
+
+<script>
+let currentPage = 0;
+const pages = document.querySelectorAll(".page");
+
+function nextPage() {
+  pages[currentPage].classList.remove("active");
+  currentPage++;
+  if (currentPage >= pages.length) currentPage = pages.length - 1;
+  pages[currentPage].classList.add("active");
+}
+
+function startOver() {
+  pages[currentPage].classList.remove("active");
+  currentPage = 0;
+  pages[currentPage].classList.add("active");
+}
+
+/* Create floating hearts */
+function createHeart() {
+  const heart = document.createElement("div");
+  heart.classList.add("heart");
+  heart.innerHTML = "❤";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.fontSize = Math.random() * 20 + 15 + "px";
+  heart.style.animationDuration = Math.random() * 3 + 4 + "s";
+  document.body.appendChild(heart);
+
+  setTimeout(() => {
+    heart.remove();
+  }, 6000);
+}
+
+setInterval(createHeart, 500);
+</script>
+
+</body>
+</html>
